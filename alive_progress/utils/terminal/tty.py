@@ -31,4 +31,4 @@ def get(original):
     return SimpleNamespace(**locals())
 
 
-BASE = get(sys.stdout)  # support for jupyter notebooks.
+BASE = get(sys.stderr)  # support for jupyter notebooks.
