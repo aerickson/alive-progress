@@ -67,6 +67,14 @@ def _bool_input_factory():
     return _input
 
 
+# TODO: write better validator
+def _file_input_factory():
+    def _input(x):
+        return x
+
+    return  _input
+
+
 def _force_tty_input_factory():
     def _input(x):
         return table.get(x, ERROR)
@@ -102,7 +110,7 @@ def _format_input_factory(allowed):
     return _input
 
 
-Config = namedtuple('Config', 'title length spinner bar unknown force_tty disable manual '
+Config = namedtuple('Config', 'title length spinner bar unknown file force_tty disable manual '
                               'enrich_print receipt receipt_text monitor elapsed stats '
                               'title_length spinner_length refresh_secs monitor_end '
                               'elapsed_end stats_end ctrl_c dual_line')
@@ -115,6 +123,7 @@ def create_config():
             title=None,
             length=40,
             theme='smooth',  # includes spinner, bar and unknown.
+            file=sys.stdout,  # right place to pass this in?
             force_tty=None,
             disable=False,
             manual=False,
@@ -184,6 +193,7 @@ def create_config():
             bar=_bar_input_factory(),
             unknown=_spinner_input_factory(ERROR),  # do not accept empty.
             force_tty=_force_tty_input_factory(),
+            file=_file_input_factory(),
             disable=_bool_input_factory(),
             manual=_bool_input_factory(),
             enrich_print=_bool_input_factory(),

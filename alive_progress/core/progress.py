@@ -74,6 +74,8 @@ def alive_bar(total=None, *, calibrate=None, **options):
                 accepts a predefined spinner name, or a custom spinner factory (cannot be None)
             theme (str): a set of matching spinner, bar and unknown
                 accepts a predefined theme name
+            file (Optional[object]): file to write progress bar and output to. defaults
+                to sys.stdout.
             force_tty (Optional[int|bool]): forces a specific kind of terminal:
                 False -> disables animations, keeping only the the final receipt
                 True -> enables animations, and auto-detects Jupyter Notebooks!

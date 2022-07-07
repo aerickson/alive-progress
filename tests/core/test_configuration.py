@@ -1,5 +1,7 @@
 from unittest import mock
 
+import sys
+
 import pytest
 
 # noinspection PyProtectedMember
@@ -114,6 +116,7 @@ def test_config_creation(handler):
     (dict(spinner=SPINNERS['pulse']), {}),
     (dict(bar='solid'), dict(bar=BARS['solid'])),
     (dict(bar=BARS['solid']), {}),
+    (dict(file=sys.stdout), {}),
     (dict(force_tty=False), dict(force_tty=NON_TTY)),
     (dict(manual=True), {}),
     (dict(enrich_print=False), {}),
