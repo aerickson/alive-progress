@@ -31,5 +31,6 @@ def get(original):
     return SimpleNamespace(**locals())
 
 
+# TODO: support setting destination file (sys.stderr, sys.stdout, etc) via param
 BASE = get(sys.stderr)
 STDOUT = get(sys.stdout) # support for jupyter notebooks.
