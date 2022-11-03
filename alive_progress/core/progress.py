@@ -197,6 +197,10 @@ def __alive_bar(config, total=None, *, calibrate=None, _cond=threading.Condition
     else:
         fps = calibrated_fps(calibrate or factor)
 
+    if config.file:
+        # TODO: define new FULL here, then make everywhere use this FULL
+        terminal.FULL = config.file
+
     run.last_len, run.elapsed, run.count, run.percent = 0, 0., 0, 0.
     run.rate, run.init, run.text, run.title, run.suffix = 0., 0., None, None, None
     thread, event_renderer, cond_refresh = None, threading.Event(), _cond()
